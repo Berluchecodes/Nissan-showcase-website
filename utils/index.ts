@@ -5,7 +5,7 @@ export async function fetchCars(filters : FilterProps) {
     const { manufacturer, year, model, limit, fuel} = filters;
 
     const headers = {
-            'X-RapidAPI-Key': '23fa0005d7msheb36f848c071b1bp1b791bjsne641b06eb7cf',
+            'X-RapidAPI-Key':  process.env.NEXT_PUBLIC_API_CARS_KEY || '',
             'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
         
     };
@@ -42,7 +42,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
     const {make, year, model} = car;
 
-    url.searchParams.append('customer', 'hrjavascript-mastery');
+    url.searchParams.append('customer', process.env.NEXT_PUBLIC_API_IMAGE_KEY || '');
     url.searchParams.append('make', make);
     url.searchParams.append('modelFamily', model.split(" ")[0]);
     url.searchParams.append('zoomType', 'fullscreen');
